@@ -6,14 +6,14 @@ from telegram.ext import ContextTypes
 from database.operations import upsert_user
 
 WELCOME_MESSAGE = (
-    "👋 *Welcome to YouTube Playlist Downloader Bot!*\n\n"
-    "I can download videos from YouTube playlists and send them directly to you.\n\n"
+    "👋 *Welcome to YouTube Playlist Downloader Bot\\!*\n\n"
+    "I can download videos from YouTube playlists and send them directly to you\\.\n\n"
     "📌 *How to use:*\n"
-    "1. Send me a YouTube playlist URL\n"
-    "2. Choose to download all videos or select specific ones\n"
-    "3. Pick your preferred quality\n"
-    "4. I'll download and send the videos to you!\n\n"
-    "Use /help to see all available commands."
+    "1\\. Send me a YouTube playlist URL\n"
+    "2\\. Choose to download all videos or select specific ones\n"
+    "3\\. Pick your preferred quality\n"
+    "4\\. I'll download and send the videos to you\\!\n\n"
+    "Use /help to see all available commands\\."
 )
 
 HELP_MESSAGE = (
