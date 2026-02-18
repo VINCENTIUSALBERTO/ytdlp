@@ -7,7 +7,7 @@ from loguru import logger
 
 from bot.utils.validators import is_youtube_url, is_playlist_url
 from bot.downloader.youtube import get_playlist_info
-from bot.keyboards.inline import playlist_action_keyboard
+from bot.keyboards.inline import playlist_action_keyboard, quality_keyboard
 
 
 def _format_duration(seconds: int | None) -> str:
@@ -150,8 +150,6 @@ async def handle_video_selection(
     # Store selected indices (convert to 0-based)
     context.user_data["selected_indices"] = [i - 1 for i in indices]
     context.user_data["awaiting_selection"] = False
-
-    from bot.keyboards.inline import quality_keyboard
 
     await update.message.reply_text(
         f"✅ Selected {len(indices)} video(s). Choose quality:",

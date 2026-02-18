@@ -16,7 +16,7 @@ settings = Settings()
 
 # Create synchronous engine (used for table creation)
 engine = create_engine(
-    settings.DATABASE_URL.replace("sqlite:///", "sqlite:///"),
+    settings.DATABASE_URL,
     echo=False,
 )
 SessionLocal = sessionmaker(bind=engine)

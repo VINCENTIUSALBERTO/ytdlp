@@ -12,6 +12,7 @@ from bot.downloader.youtube import download_video
 from bot.downloader.progress import DownloadProgress
 from bot.keyboards.inline import quality_keyboard
 from bot.utils.file_manager import get_file_size, format_size, safe_delete
+from bot.handlers.playlist import show_video_list
 from config.settings import Settings
 from database.operations import record_download, update_download_status
 
@@ -48,8 +49,6 @@ async def handle_action_callback(
         )
 
     elif action == "action_select":
-        from bot.handlers.playlist import show_video_list
-
         await show_video_list(update, context)
 
 
@@ -123,6 +122,7 @@ async def handle_quality_callback(
         )
 
         async with semaphore:
+            file_path = None
             try:
                 update_download_status(download_id, "downloading")
 
@@ -183,7 +183,7 @@ async def handle_quality_callback(
                 )
             finally:
                 # Clean up the downloaded file
-                if "file_path" in dir():
+                if file_path is not None:
                     await safe_delete(file_path)
 
     # Clear user data after all downloads complete
